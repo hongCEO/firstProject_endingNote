@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Yeon+Sung&display=swap"
+              rel="stylesheet">
+        <title>엔딩노트</title>
+    </head>
+</head>
+<script>
+    function clickEvent(){ //다음으로 누를시 이벤트(다음 db 가져오기)
+        $('#present_rates').css('width', '+=' + (0.05 * $('.widdd2').width()));
+
+    }
+    function backClickEvent(){ //이전 클릭 시 이벤트(이전 db 가지고오기)
+        $('#present_rates').css('width', '-=' + (0.05 * $('.widdd2').width()));
+    }
+</script>
+<style>
+    * {
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+
+    .wrap {
+        padding-left: 30px;
+        padding-top: 30px;
+        width: 1200px;
+        margin: auto;
+    }
+    .wrap_button{
+        width: 800px;
+        margin: auto;
+        padding-top: 10px;
+    }
+</style>
+<body>
+<div class="wrap">
+    <div class="widdd2" style="height: 30px; width: 1000px; background-color: rgba(102,102,102,.2);">
+        <div id="present_rates" class="mh-100" style="width: 0px; height: 200px; background-color: rgba(051,051,051,.9);"></div>
+    </div>
+    <h2 style="margin-top: 30px"> 나의 </h2>
+    <h2 style="font-weight: bold"> 인생 </h2>
+    <h2> 기록해보기</h2>
+    <hr>
+    <h4 style="margin-top: 30px"> 질문1)변수로 이부분에 질문이 들어갑니다.</h4>
+    <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px"></textarea>
+    <!--    위 input 부분에 답변이 들어가고, 받은 답변을 db에 저장 함.-->
+    <div class="wrap_button">
+        <button type="button" class="btn btn-secondary" onclick="backClickEvent()">이전</button>
+        <button type="button" class="btn btn-dark" onclick="clickEvent()">다음</button>
+    </div>
+</div>
+</body>
+</html>
