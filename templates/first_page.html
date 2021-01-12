@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <title>엔딩노트</title>
+</head>
+<script>
+     $(document).ready(function () {
+            $("#quiz_list").html("");
+        });
+    function openClose() {
+        if ($("#quiz_list").css("display") == "none") {
+            if ($('input[name="optionsRadios"]:checked').val() == 'option1') {
+                makeQuiz('나','내가','반려자는','자식을','내가','자식은','인생 후배들에게','다시 태어난다면 어떤 인생을 살고싶으신가요?')
+            }else {
+                makeQuiz('부모님','부모님이','두분은','나를','제가','제가','저에게','다시태어나도 제 부모님으로 태어나 주실껀가요?')
+            }
+            $('#quiz_list').show();
+        } else {
+            $('#quiz_list').empty();
+
+        }
+    }
+    function nextPage(){
+        if($('input[name="optionsRadios"]:checked').val() == 'option1'){
+            location.href='quiz_me.html'
+        }
+        else {
+            location.href='quiz_parents.html'
+        }
+    }
+    let quiz_list = []
+    //how  : 부모님은 어떻게 만나시고 좋아하게 되었나요? / 반려자는
+    //kid : 나를 / 자식을
+    //me : 제가 / 내가
+    //future : 제가 / 자식은
+    //advice : 저에게 / 인생 후배들에게
+    //end : 다시태어나도 제 부모님으로 태어나 주실껀가요? / 다시 태어난다면 어떤 인생을 살고싶으신가요?
+    function makeQuiz(who, point, how, kid, me, future, advice, end) { //부모님 or 나 //  부모님이, 내가 /
+        let tempHtml = `<li style="font-size: 30px" class="list-group-item list-group-item-primary">(quiz)${who}의 자서전 질문 리스트</li>
+        <li class="list-group-item list-group-item-danger">1. ${who}의 이름은?</li>
+        <li class="list-group-item list-group-item-danger">2. (유년기)태어난 날짜와 고향은?</li>
+        <li class="list-group-item list-group-item-danger">3. (유년기)자식들 중 몇째인가요?(예)3남2녀중 5째)</li>
+        <li class="list-group-item list-group-item-danger">4. (유년기)어린시절 가정형편은?(가난한 or 평범함 or 부유한)</li>
+        <li class="list-group-item list-group-item-secondary">5. (청소년기)학창시절 학교 끝나고 무엇을하며 놀았나요?</li>
+        <li class="list-group-item list-group-item-secondary">6. (청소년기)학창시절 별명은 무엇이었나요?</li>
+        <li class="list-group-item list-group-item-secondary">7. (청소년기)학창시절 꿈은 무엇이었나요?</li>
+        <li class="list-group-item list-group-item-warning">8. (청년기)${who}의 첫 직장은 무엇인가요?</li>
+        <li class="list-group-item list-group-item-warning">9. (청년기)${point} 좋아하는 계절과 취미는?</li>
+        <li class="list-group-item list-group-item-warning">10. (청년기)${how} 어떻게 만나시고 좋아하게 되었나요?</li>
+        <li class="list-group-item list-group-item-warning">11. (청년기)결혼은 왜 하셨나요?</li>
+        <li class="list-group-item list-group-item-warning">12. (청년기)${kid} 낳았을때 심정은 어땠나요?</li>
+        <li class="list-group-item list-group-item-success">13. (장년기)${who}의 삶의 원칙이나 가치관을 적어주세요.</li>
+        <li class="list-group-item list-group-item-success">14. (장년기)인생에서 가장 힘들었던 일을 알려주세요.</li>
+        <li class="list-group-item list-group-item-success">15. (장년기)인생에서 가장 크게 저지른 실수로 후회되는 일은 무엇일까요?</li>
+        <li class="list-group-item list-group-item-secondary">16. (현재)${me} 한 일중 제일 좋았던것은 무엇인가요?</li>
+        <li class="list-group-item list-group-item-secondary">17. (현재)${future} 어떻게 커가길 바라시나요?</li>
+        <li class="list-group-item list-group-item-secondary">18. (현재)${advice} 해주고싶은 조언이나 해주고싶은 말을 알려주세요.</li>
+        <li class="list-group-item list-group-item-primary">19. (마지막)${who}의 마지막은 어떻게 기억되고 싶으신가요?</li>
+        <li class="list-group-item list-group-item-primary">20. (마지막)${end}</li>`
+        $('#quiz_list').append(tempHtml)
+        console.log(quiz_list)
+
+    }
+
+</script>
+<style>
+    * {
+        font-family: 'Gamja Flower', cursive;
+    }
+
+    .container {
+        background-image: url("image/main.jpg");
+        background-position: center;
+        background-size: cover;
+        width: 1200px;
+        height: 1000px;
+        margin: auto;
+        text-align: center;
+        padding-top: 400px;
+        border-radius: 10px;
+    }
+
+    .info {
+        margin-top: 10px;
+        font-size: 80px;
+    }
+
+    .btn {
+        margin-top: 40px;
+        margin-left: 30px;
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+
+    .radio {
+        font-size: 30px;
+    }
+
+    .list-group {
+        margin-top: 180px;
+    }
+
+
+</style>
+<body>
+<div class="container">
+    <div class="info">
+        <p>엔딩 노트</p>
+        <h3> 인생의 자서전을 만들어보세요. </h3>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            나의 자서전 만들기
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            부모님 자서전 만들기
+        </label>
+    </div>
+    <button type="button" class="btn btn-info" onclick="nextPage()">시작하기</button>
+    <button type="button" onclick="openClose()" class="btn btn-light">질문 미리보기</button>
+    <ul class="list-group" id="quiz_list" style="display: none">
+<!--        <li style="font-size: 30px" class="list-group-item list-group-item-primary">(quiz)부모님 자서전 질문 리스트</li>-->
+<!--        <li class="list-group-item list-group-item-danger">1. 부모님의 이름은?</li>-->
+<!--        <li class="list-group-item list-group-item-danger">2. (유년기)태어난 날짜와 고향은?</li>-->
+<!--        <li class="list-group-item list-group-item-danger">3. (유년기)자식들 중 몇째인가요?(예)3남2녀중 5째)</li>-->
+<!--        <li class="list-group-item list-group-item-danger">4. (유년기)어린시절 가정형편은?(가난한 or 평범함 or 부유한)</li>-->
+<!--        <li class="list-group-item list-group-item-secondary">5. (청소년기)학창시절 학교 끝나고 뭐하고 놀았나요?</li>-->
+<!--        <li class="list-group-item list-group-item-secondary">6. (청소년기)학창시절 별명은 무엇이었나요?</li>-->
+<!--        <li class="list-group-item list-group-item-secondary">7. (청소년기)학창시절 꿈은 무엇이었나요?</li>-->
+<!--        <li class="list-group-item list-group-item-warning">8. (청년기)부모님의 첫 직장은 무엇인가요?</li>-->
+<!--        <li class="list-group-item list-group-item-warning">9. (청년기)부모님이 좋아하는 계절과 취미는?</li>-->
+<!--        <li class="list-group-item list-group-item-warning">10. (청년기)엄마아빠는 어떻게 만나시고 좋아하게 되었나요?</li>-->
+<!--        <li class="list-group-item list-group-item-warning">11. (청년기)결혼은 왜 하신거에요?</li>-->
+<!--        <li class="list-group-item list-group-item-warning">12. (청년기)나를 낳았을때 심정은?</li>-->
+<!--        <li class="list-group-item list-group-item-success">13. (장년기)부모님의 삶의 원칙이나 가치관을 알려주세요.</li>-->
+<!--        <li class="list-group-item list-group-item-success">15. (장년기)인생에서 가장 힘들었던 일을 알려주세요.</li>-->
+<!--        <li class="list-group-item list-group-item-success">16. (장년기)인생에서 가장 크게 저지른 실수로 후회되는 일은 무엇일까요?</li>-->
+<!--        <li class="list-group-item list-group-item-secondary">17. (현재)제가 한 일중 제일 좋았던것은 무엇인가요?</li>-->
+<!--        <li class="list-group-item list-group-item-secondary">18. (현재)제가 어떻게 커가길 바라시나요?</li>-->
+<!--        <li class="list-group-item list-group-item-secondary">19. (현재)저한테 해주고싶은 조언이나 해주고싶은 말을 알려주세요.</li>-->
+<!--        <li class="list-group-item list-group-item-primary">19. (마지막)부모님의 마지막은 어떻게 기억되고 싶으신가요?</li>-->
+<!--        <li class="list-group-item list-group-item-primary">20. (마지막)다시태어나도 제 부모님으로 태어나 주실껀가요?</li>-->
+    </ul>
+
+
+
+</div>
+</body>
+</html>

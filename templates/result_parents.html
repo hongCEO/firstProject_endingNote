@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Dokdo&family=East+Sea+Dokdo&family=Poor+Story&display=swap"
+              rel="stylesheet">
+        <title>엔딩노트</title>
+    </head>
+</head>
+<script>
+    let result_list = ['홍종완입니다 안녕하세요.', '2남3녀중막내', 'z몰라요옹오오옹']
+
+    function resultShow() {
+        $('#quiz_all').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url(image/1.jpg)"}); // 백그라운드 이미지 변경
+        // $(".result_img").css("padding-top","400px"); css 값 변경가능(문구 넣을때)
+        // $(".result_img").css('padding-right', '300px');
+        $('#result1').fadeOut(6000, 'linear');
+        $('#result1').fadeIn(6000, 'linear');
+        let quiz1 = result_list[0];
+        let quiz2 = result_list[1];
+
+        $("#result1").append(`    <h3 id="text1">
+            ${quiz1} 안녕...  </h3>`) //동작 테스트 완료!
+
+    }
+
+</script>
+<style>
+    .wrap {
+        padding-left: 30px;
+        padding-top: 30px;
+        width: 1200px;
+        margin: auto;
+    }
+
+    .wrap_button {
+        width: 800px;
+        margin: auto;
+        padding-top: 10px;
+    }
+
+    .result_img {
+        font-family: 'Cute Font', cursive;
+        width: 1000px;
+        height: 600px;
+        margin: auto;
+        background-image: url("image/main.jpg");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        text-align: center;
+        padding-top: 200px;
+        padding-right: 200px;
+    }
+</style>
+<body>
+<div class="result_img" id="result1">
+
+    <button onclick="resultShow()"> 이거누르면 액션</button>
+
+</div>
+</body>
+</html>

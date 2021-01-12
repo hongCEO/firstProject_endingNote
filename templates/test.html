@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="q1">
+        question1
+        <br/>
+        <input id="q1_input">
+        <button id="q1_button" onclick="button1_click()">다음버튼</button>
+    </div>
+    <div id="q2">
+        question2
+        <br/>
+        <input id="q2_input">
+        <button id="q2_button" onclick="button2_click()">결과보</button>
+    </div>
+    <div id="result">
+        결과입니다.
+        <div>
+            1번 이미지 있는 부
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let result_list = []
+    $('#q2').hide();
+    $('#result').hide()
+    function button1_click(){
+        $('#q1').hide();
+        $('#q2').show();
+        list.push($('#q1_input').val())
+    }
+    function button2_click() {
+        $('#q1').hide();
+        $('#q2').hide();
+        $('#result').show()
+        list.push($('#q2_input').val())
+        alert(list)
+    }
+    // list = ["1번 정답" ,"2번 정답"]
+</script>
