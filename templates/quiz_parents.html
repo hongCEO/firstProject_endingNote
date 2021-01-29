@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <head>
+        {# 카카오톡 링크#}
+        <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
         <!-- Required meta tags -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -24,11 +27,385 @@
 </head>
 <script>
     let result_list = []
+    var audio = new Audio("{{ url_for('static', filename='audio/22.mp3') }}")
 
     function resultShow() {
+        audio.play();
         $('#quiz_all').empty();
-
+        $('#result1').show();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/1.png') }})"}); // 백그라운드 이미지 변경
+        // $(".result_img").css("padding-top","400px"); css 값 변경가능(문구 넣을때)
+        // $(".result_img").css('padding-right', '300px');
+        let quiz1 = result_list[0];
+        $("#result1").append(`    <h3 style="text-align: center">
+            ${quiz1}의 인생 자서전.</h3>`) //동작 테스트 완료!
+        $('#result1').delay(3000).fadeOut(3000, 'linear');
+        setTimeout(resultShow2, 6000);
     }
+
+    function resultShow2() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/2.png') }})"});
+        $('#result1').fadeIn(2000, 'linear')
+        let quiz1 = result_list[0];
+        let quiz2 = result_list[1];
+        $("#result1").append(`  <h3 style="text-align: center">
+            이름 : ${quiz1}<br> 태어난 날짜와 고향 : ${quiz2}</h3><br><br><h4 style="text-align: center">아이는 축복받으며 태어났습니다.</h4>`) //동작 테스트 완료!
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow3, 5400);
+    }
+
+    function resultShow3() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/3.png') }})"});
+        $('#result1').fadeIn(2000, 'linear')
+        let quiz3 = result_list[2];
+        $("#result1").append(` <h3 style="text-align: center">
+            형제자매 : ${quiz3}</h3><br><br><h4 style="text-align: center"> 부모님은 나의 어린시절을 아름답게 꾸며주었습니다.</h4>`) //동작 테스트 완료!
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow4, 5400);
+    }
+
+    function resultShow4() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/4.png') }})"});
+        let quiz1 = result_list[0];
+        let quiz4 = result_list[3];
+        $("#result1").append(`    <h3 style="text-align: center">
+           가정환경 : ${quiz4}</h3> <br><br> <h4 style="text-align: center">${quiz1}은 ${quiz4} 환경에서 아버지 어머니로부터 사랑받으며 유년을 보냈습니다.</h4>`) //동작 테스트 완료!
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow5, 5400);
+    }
+
+    // 아름다운 시절은 꽃잎처럼 흩어져 다시 올수없지만
+    function resultShow5() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/5.png') }})"});
+        let quiz5 = result_list[4];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+           학창시절의 놀이 : ${quiz5}<br><br></h3> <h4 style="text-align: center">학교에 들어가고 추억을 선물한 친구들을 사귀게되었습니다.</h4>`) //동작 테스트 완료!
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow6, 5400);
+    }
+
+    function resultShow6() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/6.png') }})"});
+        let quiz6 = result_list[5];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            학창시절 별명: ${quiz6} <br><br> </h3> <h4 style="text-align: center">서로 별명을 부르며 매일걷던 등굣길, 혼을내던 선생님</h4>`) //동작 테스트 완료!
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow7, 5400);
+    }
+
+    function resultShow7() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/7.png') }})"});
+        let quiz7 = result_list[6];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            학창시절 꿈 : ${quiz7}<br><br> </h3> <h4 style="text-align: center"> 뒤처지는 걱정도 조급함도 없었던 빛나던 어린시절</h4>`) //동작 테스트 완료!
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow8, 5400);
+    }
+
+    function resultShow8() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/8.png') }})"});
+        let quiz9 = result_list[8];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            좋아하는 계절, 취미 : ${quiz9}<br><br> </h3> <h4 style="text-align: center">계절이 바뀌는 설레임을 느끼고 꿈을 찾아 노력했습니다. </h4>`) //동작 테스트 완료!
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow9, 5400);
+    }
+
+    function resultShow9() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/9.png') }})"});
+        let quiz8 = result_list[7];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            첫 직장 : ${quiz8}<br><br> </h3> <h4 style="text-align: center">사회로 나가는 첫 발걸음은 어색하고 긴장됐습니다. </h4>`) //동작 테스트 완료!
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow10, 5400);
+    }
+
+    function resultShow10() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/10.png') }})"});
+        let quiz10 = result_list[9];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            부모님은 서로 어떻게 만나고 좋아하게 되었나요? <br> ☞ ${quiz10} <br><br> </h3> <h4 style="text-align: center">그대와 처음만났던 그 날, 처음으로 입맞추던 그날을 잊을수 없습니다. </h4>`) //동작 테스트 완료!
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow11, 5400);
+    }
+
+    function resultShow11() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/11.png') }})"});
+        let quiz11 = result_list[10];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            결혼을 하게된 이유는? <br> ☞ ${quiz11} <br><br> </h3> <h4 style="text-align: center">그대와 평생을 함께하고싶다는 생각에 용기를 냈습니다. </h4>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow12, 5400);
+    }
+
+    function resultShow12() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/2.png') }})"});
+        let quiz12 = result_list[11];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            자식이 태어났을때의 심정은? <br> ☞ ${quiz12} <br><br> </h3> <h4 style="text-align: center">나를 꼭 닮은 아이가 생겼고 삶의 의미가 더해졌습니다. </h4>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow13, 5400);
+    }
+
+    function resultShow13() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/13.png') }})"});
+        let quiz13 = result_list[12];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+           삶의 원칙과 가치관 <br> ☞ ${quiz13} <br><br> </h3> <h4 style="text-align: center">가정이생기고 지켜야할 것들이 늘어날수록 현실과 타협하게 되었습니다. </h4>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow14, 5400);
+    }
+
+    function resultShow14() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/14.jpg') }})"});
+        let quiz14 = result_list[13];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            인생에서 가장 힘들었던 일 <br> ☞ ${quiz14} <br><br> </h3> <h4 style="text-align: center">힘들때나 지나치게 벅찰땐 잠시 쉬어가고싶었고, 울고싶었습니다.  </h4>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow15, 5400);
+    }
+
+    function resultShow15() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/15.jpg') }})"});
+        let quiz14 = result_list[13];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            인생에서 크게 저지른 실수나 후회되는 일 <br> ☞ ${quiz14}  <br><br> </h3> <h4 style="text-align: center">거울에 비친 주름진 내 모습을 보며 잠시 가던길을 뒤돌아 보았습니다.  </h4>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow16, 5400);
+    }
+
+    function resultShow16() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/16.png') }})"});
+        let quiz16 = result_list[15];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            자식이 한 일중 가장 좋았던것? <br> ☞ ${quiz16} <br><br> </h3> <h4 style="text-align: center">나보다 커버린 자식들을 바라보며 흐믓하면서도 어느때는 괜스레 서글펐습니다.  </h4>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow17, 5400);
+    }
+
+    function resultShow17() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/17.jpg') }})"});
+        let quiz17 = result_list[16];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            자식들은 어떻게 커가길 바라시나요? <br> ☞ ${quiz17} <br><br> </h3> <h4 style="text-align: center"> 자식들은 하고싶은일을 하며 행복하게 웃음짓는 매일이 되었으면 좋겠습니다.  </h4>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow18, 5400);
+    }
+
+    function resultShow18() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/18.png') }})"});
+        let quiz18 = result_list[17];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            자식에게 해주고싶은 조언 <br> ☞ ${quiz18} <br><br></h3> <h4 style="text-align: center">인생의 황혼기에 접어들고 옛 추억에 미소를 지어봅니다.  </h4>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow19, 5400);
+    }
+
+    function resultShow19() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/19.png') }})"});
+        let quiz19 = result_list[18];
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            부모님의 마지막은 어떻게 기억되고 싶으신가요? <br> ☞ ${quiz19} <br><br> </h3> <h4 style="text-align: center">마지막 순간까지 찬란한 빛처럼 살다 갈 수있기를 바라봅니다.  </h4>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow20, 5400);
+    }
+
+    function resultShow20() {
+        $('#result1').empty();
+        $('#result1').fadeIn(2000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/20.png') }})"});
+        $("#result1").append(`    <h3 id="text1" style="text-align: center">
+            다시 태어난다면...?</h3>`)
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow21, 5400);
+    }
+
+    function resultShow21() {
+        $('#result1').empty();
+        $('#result1').fadeIn('linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/21.jpg') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow22, 2000);
+    }
+
+    function resultShow22() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/22.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow23, 1500);
+    }
+
+    function resultShow23() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/23.jpg') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow24, 1500);
+    }
+
+    function resultShow24() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/24.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow25, 1400);
+    }
+
+    function resultShow25() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/25.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow26, 1400);
+    }
+
+    function resultShow26() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/26.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow27_1, 1300);
+    }
+
+    function resultShow27_1() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/27-1.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow28_1, 1300);
+    }
+
+    function resultShow28_1() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/28-1.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow27, 1200);
+    }
+
+    function resultShow27() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/27.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow28, 1200);
+    }
+
+    function resultShow28() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/28.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow29, 1100);
+    }
+
+    function resultShow29() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/29.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow30, 1100);
+    }
+
+    function resultShow30() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/30.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow31, 1000);
+    }
+
+    function resultShow31() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/31.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow32, 1000);
+    }
+
+    function resultShow32() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/32.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow33, 1100);
+    }
+
+    function resultShow33() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/33.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow34, 900);
+    }
+
+    function resultShow34() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/34.png') }})"});
+        {#$("#result1").append(`    <h3 id="text1" style="text-align: center">#}
+        {#    다시 태어난다면...</h3>`)#}
+        setTimeout(resultShow35, 900);
+    }
+
+    function resultShow35() {
+        $('#result1').empty();
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/35.png') }})"});
+        $('#result1').fadeOut(2900, 'linear');
+        setTimeout(resultShow36, 800);
+    }
+
+    function resultShow36() {
+        $('#result1').empty();
+        $('#result1').fadeIn(1000, 'linear');
+        $(".result_img").css({"background": "center / contain no-repeat url({{ url_for('static', filename='image/37.png') }})"});
+        $("#result1").append(` <br> <button id="replay" type="button" class="btn btn-info" > 다시보기 </button>`);
+        $("#result1").append(` <button id="kakao-link-btn" type="button" class="btn btn-link" href="javascript:sendLink()" > 공유하기 </button>`);
+        {#$("#result1").append(`<a id="kakao-link-btn" href="javascript:sendLink()"> <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"#}
+        {#/> </a>`);#}
+        $('#replay').click(function () {
+            $('#replay').hide();
+            $('#kakao-link-btn').hide();
+            audio.load();
+            resultShow()
+        });
+    }
+
 
     function nextEvent1() { // 다음누르면 기존 질문 hide()
         $('#present_rates').css('width', '+=' + (0.05 * $('.widdd2').width()));
@@ -171,16 +548,53 @@
         setTimeout(resultShow, 3000);
         // 여기다가 새로운 함수들 넣으면 됨.
     }
+</script>
+<script type="text/javascript">
+    function sendLink() {
+        kakao.init('2b5c6b60493208206a30f717df5ff2b3')
+        Kakao.Link.sendDefault({
+            objectType: 'feed',
+            content: {
+                title: '엔딩 노트',
+                description: '#자서전 #부모님 자서전 #인생일기 #인생자서전',
+                imageUrl:
+                  'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+                link: {
+                    mobileWebUrl: 'http://lifenote.shop',
+                    webUrl: 'http://lifenote.shop',
+                },
+            },
+            social: {
+                likeCount: 286,
+                commentCount: 45,
+                sharedCount: 845,
+            },
+            buttons: [
+                {
+                    title: '웹으로 보기',
+                    link: {
+                        mobileWebUrl: 'http://lifenote.shop',
+                        webUrl: 'http://lifenote.shop',
+                    },
+                },
+                {
+                    title: '앱으로 보기',
+                    link: {
+                        mobileWebUrl: 'http://lifenote.shop',
+                        webUrl: 'http://lifenote.shop',
+                    },
+                },
+            ],
+        })
+    }
+
 
 </script>
 <style>
-    * {
-
-    }
-
     .wrap {
         padding-left: 30px;
         padding-top: 30px;
+        padding-right: 30px;
         width: 1200px;
         margin: auto;
         font-family: 'Nanum Gothic', sans-serif;
@@ -192,175 +606,251 @@
         padding-top: 10px;
         font-family: 'Nanum Gothic', sans-serif;
     }
+
+    .result_img {
+        font-family: 'Cute Font', cursive;
+        height: 600px;
+        margin: auto;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        text-align: center;
+        padding-top: 600px;
+        display: none;
+    }
+
+    .widdd2 {
+        height: 30px;
+        width: 800px;
+        background-color: rgba(102, 102, 102, .2);
+    }
+
+    .textarea_css {
+        width: 500px;
+        margin-top: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .result_img {
+            width: auto;
+            height: auto;
+            font-family: 'Cute Font', cursive;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            text-align: center;
+            display: none;
+            padding-top: 460px;
+            padding-left: 30px;
+        }
+
+        .wrap_button {
+            width: auto;
+        }
+
+        .textarea_css {
+            width: 300px;
+        }
+
+        .wrap {
+            width: auto;
+        }
+
+        .widdd2 {
+            width: 300px;
+            height: 30px;
+        }
+
+        h4 {
+            font-size: 15px;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+    }
+
 </style>
 <body>
-<div class="wrap" id="quiz_all">
-    <div class="widdd2" style="height: 30px; width: 800px; background-color: rgba(102,102,102,.2);">
-        <div id="present_rates" class="mh-100"
-             style="width: 40px; height: 200px; background-color: rgba(051,051,051,.9);"></div>
+
+
+<!--? 퀴즈 문제 출시 부분-->
+<div class="wrap">
+    <div class="result_img" id="result1">
+        <!--?    이부분에 결과값이 자동으로 생성됨.-->
     </div>
-    <h2 style="margin-top: 30px"> 나의 </h2>
-    <h2 style="font-weight: bold"> 인생 </h2>
-    <h2> 기록해보기</h2>
-    <hr>
-    <div id="quiz_list1">
-        <h4 style="margin-top: 30px"> 질문1) 부모님의 이름은?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q1_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent1()">다음</button>
+    <div id="quiz_all">
+        <div class="widdd2">
+            <div id="present_rates" class="mh-100"
+                 style="width: 40px; height: 200px; background-color: rgba(051,051,051,.9);"></div>
         </div>
-    </div>
-    <div id="quiz_list2" style="display: none">
-        <h4 style="margin-top: 30px"> 질문2) (유년기)태어난 날짜와 고향은?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q2_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent2()">다음</button>
+        <h2 style="margin-top: 30px"> 부모님 </h2>
+        <h2 style="font-weight: bold"> 인생 </h2>
+        <h2> 기록해보기</h2>
+        <hr>
+        <div id="quiz_list1">
+            <h4 style="margin-top: 30px"> 질문1) 부모님의 이름은?</h4>
+            <textarea class="textarea_css" placeholder="입력해주세요." id="q1_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent1()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list3" style="display: none">
-        <h4 style="margin-top: 30px"> 질문3) (유년기)자식들 중 몇째인가요?(예)3남2녀중 5째)</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q3_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent3()">다음</button>
+        <div id="quiz_list2" style="display: none">
+            <h4 style="margin-top: 30px"> 질문2) (유년기)태어난 날짜와 고향은?(예)1989년 7월18일 인천)</h4>
+            <textarea class="textarea_css" placeholder="입력해주세요." id="q2_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent2()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list4" style="display: none">
-        <h4 style="margin-top: 30px"> 질문4 (유년기)어린시절 가정형편은?(가난한 or 평범함 or 부유한)</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q4_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent4()">다음</button>
+        <div id="quiz_list3" style="display: none">
+            <h4 style="margin-top: 30px"> 질문3) (유년기)자식들 중 몇째인가요?(예)3남2녀중 5째)</h4>
+            <textarea class="textarea_css" placeholder="입력해주세요." id="q3_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent3()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list5" style="display: none">
-        <h4 style="margin-top: 30px"> 질문5) (청소년기)학창시절 학교 끝나고 무엇을하며 놀았나요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q5_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent5()">다음</button>
+        <div id="quiz_list4" style="display: none">
+            <h4 style="margin-top: 30px"> 질문4 (유년기)어린시절 가정형편은?(가난한 or 평범함 or 부유한)</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q4_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent4()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list6" style="display: none">
-        <h4 style="margin-top: 30px"> 질문6) (청소년기)학창시절 별명은 무엇이었나요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q6_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent6()">다음</button>
+        <div id="quiz_list5" style="display: none">
+            <h4 style="margin-top: 30px"> 질문5) (청소년기)학창시절 학교 끝나고 무엇을하며 놀았나요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q5_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent5()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list7" style="display: none">
-        <h4 style="margin-top: 30px"> 질문7) (청소년기)학창시절 꿈은 무엇이었나요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q7_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent7()">다음</button>
+        <div id="quiz_list6" style="display: none">
+            <h4 style="margin-top: 30px"> 질문6) (청소년기)학창시절 별명은 무엇이었나요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q6_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent6()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list8" style="display: none">
-        <h4 style="margin-top: 30px"> 질문8) (청년기)부모님의 첫 직장은 무엇인가요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q8_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent8()">다음</button>
+        <div id="quiz_list7" style="display: none">
+            <h4 style="margin-top: 30px"> 질문7) (청소년기)학창시절 꿈은 무엇이었나요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q7_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent7()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list9" style="display: none">
-        <h4 style="margin-top: 30px"> 질문9) (청년기)부모님이 좋아하는 계절과 취미는?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q9_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent9()">다음</button>
+        <div id="quiz_list8" style="display: none">
+            <h4 style="margin-top: 30px"> 질문8) (청년기)부모님의 첫 직장은 무엇인가요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q8_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent8()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list10" style="display: none">
-        <h4 style="margin-top: 30px"> 질문10) (청년기)두분은 어떻게 만나시고 좋아하게 되었나요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q10_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent10()">다음</button>
+        <div id="quiz_list9" style="display: none">
+            <h4 style="margin-top: 30px"> 질문9) (청년기)부모님이 좋아하는 계절과 취미는?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q9_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent9()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list11" style="display: none">
-        <h4 style="margin-top: 30px"> 질문11) (청년기)결혼은 왜 하셨나요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q11_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent11()">다음</button>
+        <div id="quiz_list10" style="display: none">
+            <h4 style="margin-top: 30px"> 질문10) (청년기)부모님은 어떻게 만나시고 좋아하게 되었나요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q10_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent10()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list12" style="display: none">
-        <h4 style="margin-top: 30px"> 질문12) (청년기)나를 낳았을때 심정은 어땠나요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q12_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent12()">다음</button>
+        <div id="quiz_list11" style="display: none">
+            <h4 style="margin-top: 30px"> 질문11) (청년기)결혼은 왜 하셨나요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q11_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent11()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list13" style="display: none">
-        <h4 style="margin-top: 30px"> 질문13) (장년기)부모님의 삶의 원칙이나 가치관을 적어주세요.</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q13_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent13()">다음</button>
+        <div id="quiz_list12" style="display: none">
+            <h4 style="margin-top: 30px"> 질문12) (청년기)나를 낳았을때 심정은 어땠나요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q12_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent12()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list14" style="display: none">
-        <h4 style="margin-top: 30px"> 질문14) (장년기)인생에서 가장 힘들었던 일을 알려주세요.</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q14_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent14()">다음</button>
+        <div id="quiz_list13" style="display: none">
+            <h4 style="margin-top: 30px"> 질문13) (장년기)부모님의 삶의 원칙이나 가치관을 적어주세요.</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q13_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent13()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list15" style="display: none">
-        <h4 style="margin-top: 30px"> 질문15) (장년기)인생에서 가장 크게 저지른 실수로 후회되는 일은 무엇일까요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q15_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent15()">다음</button>
+        <div id="quiz_list14" style="display: none">
+            <h4 style="margin-top: 30px"> 질문14) (장년기)인생에서 가장 힘들었던 일을 알려주세요.</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q14_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent14()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list16" style="display: none">
-        <h4 style="margin-top: 30px"> 질문16)(현재)제가 한 일중 제일 좋았던것은 무엇인가요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q16_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent16()">다음</button>
+        <div id="quiz_list15" style="display: none">
+            <h4 style="margin-top: 30px"> 질문15) (장년기)인생에서 가장 크게 저지른 실수로 후회되는 일은 무엇일까요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q15_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent15()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list17" style="display: none">
-        <h4 style="margin-top: 30px"> 질문17)(현재)제가 어떻게 커가길 바라시나요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q17_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent17()">다음</button>
+        <div id="quiz_list16" style="display: none">
+            <h4 style="margin-top: 30px"> 질문16)(현재)자식들이 한 일중 제일 좋았던것은 무엇인가요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q16_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent16()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list18" style="display: none">
-        <h4 style="margin-top: 30px"> 질문18)(현재)저에게 해주고싶은 조언이나 해주고싶은 말을 알려주세요.</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q18_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent18()">다음</button>
+        <div id="quiz_list17" style="display: none">
+            <h4 style="margin-top: 30px"> 질문17)(현재)자식들은 어떻게 커가길 바라시나요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q17_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent17()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list19" style="display: none">
-        <h4 style="margin-top: 30px"> 질문19)(마지막)부모님의 마지막은 어떻게 기억되고 싶으신가요?</h4>
-        <textarea placeholder="입력해주세요." style="width: 500px; margin-top: 10px" id="q19_input"></textarea>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent19()">다음</button>
+        <div id="quiz_list18" style="display: none">
+            <h4 style="margin-top: 30px"> 질문18)(현재)자식들에게 해주고싶은 조언이나 해주고싶은 말을 알려주세요.</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q18_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent18()">다음</button>
+            </div>
         </div>
-    </div>
-    <div id="quiz_list20" style="display: none">
-        <h4 style="margin-top: 30px"> 질문20)(마지막)다시태어나도 제 부모님으로 태어나 주실껀가요?</h4>
-        <!--    질문과 답변을 show hide()-->
-        <div class="wrap_button">
-            <button type="button" class="btn btn-dark" onclick="nextEvent20()"> 네 </button>
-            <button type="button" class="btn btn-dark" onclick="nextEvent20()"> 아니오 </button>
+        <div id="quiz_list19" style="display: none">
+            <h4 style="margin-top: 30px"> 질문19)(마지막)부모님의 마지막은 어떻게 기억되고 싶으신가요?</h4>
+            <textarea placeholder="입력해주세요." class="textarea_css" id="q19_input"></textarea>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent19()">다음</button>
+            </div>
+        </div>
+        <div id="quiz_list20" style="display: none">
+            <h4 style="margin-top: 30px"> 질문20)(마지막)다시 태어나도 제 부모님으로 태어나 주실껀가요?</h4>
+            <!--    질문과 답변을 show hide()-->
+            <div class="wrap_button">
+                <button type="button" class="btn btn-dark" onclick="nextEvent20()"> 네</button>
+                <button type="button" class="btn btn-dark" onclick="nextEvent20()"> 아니오</button>
+            </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="엔딩 노트"/>
+    <meta property="og:description" content="부모님의 자서전을 만들어보세요."/>
+    <meta property="og:image" content="{{ url_for('static', filename='image/15.jpg') }}"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <title>엔딩노트</title>
+</head>
+<script>
+    function enter1(){
+        $('#name1').hide()
+    }
+
+
+</script>
+<style>
+    * {
+        font-family: 'Gamja Flower', cursive;
+    }
+
+    .container {
+        background-image: url("../static/image/main.jpg");
+        background-position: center;
+        background-size: cover;
+        width: 1200px;
+        height: 1000px;
+        margin: auto;
+        text-align: center;
+        padding-top: 400px;
+        border-radius: 10px;
+    }
+
+    .info {
+        margin-top: 10px;
+        font-size: 80px;
+    }
+
+    .btn {
+        margin-top: 40px;
+        margin-left: 30px;
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+
+    .radio {
+        font-size: 30px;
+    }
+
+    .list-group {
+        margin-top: 180px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .container {
+            width: auto;
+            height: auto;
+            background-image: url("../static/image/main.jpg");
+            background-position: center;
+            background-size: cover;
+            margin: auto;
+            text-align: center;
+            padding-top: 80px;
+            border-radius: 10px;
+        }
+
+        h3 {
+            font-size: 23px;
+        }
+
+        .list-group {
+             margin-top: auto;
+        }
+
+    }
+
+</style>
+<body>
+<form class="form-inline">
+        <div class="form-group">
+            <label for="name1">이름</label>
+            <input type="text" class="form-control" id="name1" placeholder="통신실 내선">
+        </div>
+        <div class="form-group">
+            <label>발신번호</label>
+            <input type="number" class="form-control" placeholder="03180624604">
+        </div>
+        <button type="submit" class="btn btn-default" onclick="enter1()">입력완료</button>
+    </form>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="exampleInputName2" disabled>이름</label>
+            <input type="text" class="form-control" placeholder="통신실 휴대폰" id="exampleInputName2">
+        </div>
+        <div class="form-group">
+            <label >발신번호</label>
+            <input type="number" class="form-control" placeholder="01080628272">
+        </div>
+        <button type="submit" class="btn btn-default">입력완료</button>
+    </form>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="exampleInputName3" >이름</label>
+            <input type="text" class="form-control" placeholder="통신실 해외" id="exampleInputName3">
+        </div>
+        <div class="form-group">
+            <label>발신번호</label>
+            <input type="number" class="form-control" placeholder="001101031512672">
+        </div>
+        <button type="submit" class="btn btn-default">입력완료</button>
+    </form>
+    <input type="checkbox" disabled="disabled" id="check1">
+    <label for="check1">Check</label>
+    <br/>
+
+    <button type="button" class="btn btn-info" onclick="nextPage()">시작하기</button>
+    <button type="button" onclick="openClose()" class="btn btn-light">질문 미리보기</button>
+
+
+
+</div>
+</body>
+</html>
